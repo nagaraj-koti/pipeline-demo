@@ -1,3 +1,29 @@
 pipeline{
     agent {label "node1"}
+    stages {
+        stage ("BUILD"){
+            steps{
+                echo "Building the Application.."
+                sh 'timedatectl'
+                sh 'sleep 3'
+            }
+        }
+        stage("DEPLOY"){
+            steps{
+                echo "Deploying application.."
+                sh '''
+                    date
+                    uname -r
+                    sleep 4
+                '''
+            }
+        }
+        stage("TESTING"){
+            steps{
+                echo "Testing the application..."
+                sh 'echo "Test cases running"'
+                sh 'sleep 3'
+            }
+        }
+    }
 }
