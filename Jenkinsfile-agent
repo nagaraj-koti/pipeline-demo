@@ -19,10 +19,27 @@ pipeline{
             }
         }
         stage("TESTING"){
-            steps{
-                echo "Testing the application..."
-                sh 'echo "Test cases running"'
-                sh 'sleep 3'
+            parallel{
+                stage("TEST1"){
+                    steps{
+                        echo "Testing----"
+                        sh 'echo "Test-1 running"'
+                        sh 'sleep 3'
+                    }
+                }
+                stage("TEST2"){
+                    steps{
+                        echo "Testing----"
+                        sh '''
+                            echo "Test-2 running"
+                            lsb_release -d 
+                            who
+                            id
+                            sleep 3
+                        '''
+                    }
+
+                }
             }
         }
     }
