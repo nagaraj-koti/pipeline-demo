@@ -23,7 +23,7 @@ pipeline{
         stage("TESTING"){
             parallel{
                 stage("TEST1"){
-                    agent {label "master"}
+                    agent any
                     steps{
                         echo "Testing----"
                         sh 'echo "Test-1 running"'
