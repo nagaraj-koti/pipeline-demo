@@ -32,7 +32,7 @@ pipeline{
                         echo "Testing----"
                         sh '''
                             echo "Test-2 running"
-                            lsb_release -d 
+                            cat /etc/os-release
                             who
                             id
                             sleep 3
