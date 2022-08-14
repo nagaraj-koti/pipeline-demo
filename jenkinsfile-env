@@ -12,13 +12,14 @@ pipeline {
             }
             steps {
                 sh "echo 'Building----' "
-                sh "sleep 5"
+                sh "sleep 2"
                 echo "${env.BRANCH} -- ${env.BUILD_MSG}"
             }
         }
         stage('Deploy') {
              environment {
-                BUILD_MSG = 'This is BUILD environment'
+                BUILD_MSG = 'This is Deploy environment'
+                DEPLOY_MSG = 'This is Deploy_MSG outside shell'
             }
             steps {
                 sh ''' 
@@ -26,6 +27,7 @@ pipeline {
                 pwd
                 ls
                 free -m
+                echo "$BUILD_MSG"
                 '''
                 echo env.BUILD_MSG
             }
@@ -33,13 +35,13 @@ pipeline {
 	  stage('Test') {
             steps {
                 echo 'Testing..-'
-                sh "sleep 5"
+                sh "sleep 2"
             }
         }
           stage('Test2') {
             steps {
                 echo 'Testing..-2'
-                sh "sleep 5"
+                sh "sleep 2"
             }
         }
     }
