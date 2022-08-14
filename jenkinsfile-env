@@ -13,7 +13,7 @@ pipeline {
             steps {
                 sh "echo 'Building----' "
                 sh "sleep 5"
-                echo "${env.BRANCH} ${env.BUILD_MSG}"
+                echo "${env.BRANCH} -- ${env.BUILD_MSG}"
             }
         }
         stage('Deploy') {
@@ -24,7 +24,7 @@ pipeline {
                 pwd
                 ls
                 free -m
-                sleep 5
+                echo env.BUILD_MSG
                 '''
             }
         }
