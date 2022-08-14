@@ -14,6 +14,7 @@ pipeline {
                 BUILD_MSG = 'This is BUILD environment'
             }
             steps {
+
                 sh "echo 'Building----' "
                 sh "sleep 2"
                 echo "${env.BRANCH} -- ${env.BUILD_MSG}"
@@ -25,6 +26,8 @@ pipeline {
                 DEPLOY_MSG = 'This is Deploy_MSG outside shell'
             }
             steps {
+                catchError{ buildResult : 'SUCCESS', stageResult: 'FAILURE' }
+                
                 sh ''' 
                 #!/bin/bash
                 pwd
@@ -32,7 +35,7 @@ pipeline {
                 free -m
                 echo "$DEPLOY_MSG"
                 '''
-                // echo "${PUNITH} -- ${env.GIT}"
+                echo "${PUNITH} -- ${env.GIT}"
             }
         }
 	  stage('Test') {
