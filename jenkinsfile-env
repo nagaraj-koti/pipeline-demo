@@ -1,14 +1,23 @@
 pipeline {
     agent any
+    environment{
+        BRANCH = 'main'
+        GIT = 'https://github.com/nagaraj-koti/pipeline-demo.git'
+    }
 
     stages {
         stage('Build') {
+            environment {
+                BUILD_MSG = 'This is BUILD environment'
+            }
             steps {
                 sh "echo 'Building----' "
                 sh "sleep 5"
+                echo env.BRANCH
             }
         }
         stage('Deploy') {
+
             steps {
                 sh ''' 
                 #!/bin/bash
