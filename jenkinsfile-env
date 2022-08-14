@@ -4,6 +4,9 @@ pipeline {
         BRANCH = 'main'
         GIT = 'https://github.com/nagaraj-koti/pipeline-demo.git'
     }
+    parameters{
+        string(name:'field1', defaultValue:'default value', decsription:'Description for field1')
+    }
 
     stages {
         stage('Build') {
@@ -14,6 +17,7 @@ pipeline {
                 sh "echo 'Building----' "
                 sh "sleep 2"
                 echo "${env.BRANCH} -- ${env.BUILD_MSG}"
+                echo "This is the stringparameter => ${params.field1}"
             }
         }
         stage('Deploy') {
