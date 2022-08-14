@@ -32,7 +32,7 @@ pipeline {
                 free -m
                 echo "$DEPLOY_MSG"
                 '''
-                echo "${PUNITH} -- ${env.GIT}"
+                // echo "${PUNITH} -- ${env.GIT}"
             }
         }
 	  stage('Test') {
