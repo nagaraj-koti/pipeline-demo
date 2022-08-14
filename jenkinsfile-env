@@ -26,7 +26,7 @@ pipeline {
                 pwd
                 ls
                 free -m
-                echo "${env.BUILD_MSG}"
+                echo env.BUILD_MSG
                 '''
             }
         }
