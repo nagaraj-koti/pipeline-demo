@@ -18,7 +18,6 @@ pipeline {
         }
         stage('Deploy') {
              environment {
-                BUILD_MSG = 'This is Deploy environment'
                 DEPLOY_MSG = 'This is Deploy_MSG outside shell'
             }
             steps {
@@ -27,9 +26,9 @@ pipeline {
                 pwd
                 ls
                 free -m
-                echo "$BUILD_MSG"
+                echo "$DEPLOY_MSG"
                 '''
-                echo env.DEPLOY_MSG
+                echo env.BUILD_MSG
             }
         }
 	  stage('Test') {
