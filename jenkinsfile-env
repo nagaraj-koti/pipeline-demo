@@ -1,0 +1,35 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Build') {
+            steps {
+                sh "echo 'Building----' "
+                sh "sleep 5"
+            }
+        }
+        stage('Deploy') {
+            steps {
+                sh ''' 
+                #!/bin/bash
+                pwd
+                ls
+                free -m
+                sleep 5
+                '''
+            }
+        }
+	  stage('Test') {
+            steps {
+                echo 'Testing..-'
+                sh "sleep 5"
+            }
+        }
+          stage('Test2') {
+            steps {
+                echo 'Testing..-2'
+                sh "sleep 5"
+            }
+        }
+    }
+}
