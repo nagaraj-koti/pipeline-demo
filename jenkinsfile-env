@@ -13,7 +13,7 @@ pipeline {
             steps {
                 sh "echo 'Building----' "
                 sh "sleep 5"
-                echo env.BRANCH
+                echo "${env.BRANCH} ${env.BUILD_MSG}"
             }
         }
         stage('Deploy') {
