@@ -5,7 +5,7 @@ pipeline {
         GIT = 'https://github.com/nagaraj-koti/pipeline-demo.git'
     }
     parameters{
-        string(name:'field1', defaultValue:'default value', decsription:'Description for field1')
+        string(name:'field1', defaultValue:'default value', description:'Description for field1')
     }
 
     stages {
