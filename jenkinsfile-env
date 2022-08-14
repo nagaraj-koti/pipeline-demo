@@ -28,7 +28,7 @@ pipeline {
                 free -m
                 echo "$DEPLOY_MSG"
                 '''
-                echo "${env.BUILD_MSG} -- ${env.GIT}"
+                echo "${env.PUNITH} -- ${env.GIT}"
             }
         }
 	  stage('Test') {
