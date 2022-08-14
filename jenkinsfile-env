@@ -29,7 +29,7 @@ pipeline {
                 free -m
                 echo "$BUILD_MSG"
                 '''
-                echo env.BUILD_MSG
+                echo env.DEPLOY_MSG
             }
         }
 	  stage('Test') {
