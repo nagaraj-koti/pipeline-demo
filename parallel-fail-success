@@ -1,0 +1,49 @@
+boolean isState=false
+pipeline{
+    agent any
+    stages{
+        stage('parallel-stage'){
+            
+            parallel{
+                
+                stage('stage1'){
+                        steps{
+                            catchError(buildResult:"SUCCESS", stageResult:"FAILURE"){
+                                echo "stage1"
+                                // sh 'exit 1'
+                                script{
+                                    isState=true
+                                }
+                            }
+                        }
+                }
+                stage('stage2'){
+                       steps{
+                            catchError(buildResult:"SUCCESS", stageResult:"FAILURE"){
+                                echo "stage2"
+                                // sh 'exit 1'
+                                script{
+                                    isState=true
+                                }
+                            }
+                        }
+                }
+            }
+        }
+        stage('stage3'){
+            // when{
+            //     expression{ isState==true }
+            // }
+            steps{
+                script{
+                    if(isState==false){
+                        sh 'exit 1'
+                    }
+                    echo "job markes as success"
+                }
+                echo 'stage3'
+            }
+        }
+    }
+
+}
