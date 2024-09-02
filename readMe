@@ -1,2 +1,3 @@
-test
-texts
+#git credential helper used manage our git credentails to operate with github
+
+git config --local credential.helper store
